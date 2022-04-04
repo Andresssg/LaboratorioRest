@@ -83,12 +83,12 @@ public class Service {
     @Path("/getSalariesInJson")
     @Produces(MediaType.APPLICATION_JSON)
     public double getSalariesInJson() {
-        double promedio = 0;
+        double sumaSalarios = 0;
         ArrayList personas = new ArrayList<>(persons.values());
         for (int i = 0; i < persons.size(); i++) {
-            promedio += ((Person) personas.get(i)).getSalary();
+            sumaSalarios += ((Person) personas.get(i)).getSalary();
         }
-        return promedio;
+        return sumaSalarios;
     }
 
     @POST
