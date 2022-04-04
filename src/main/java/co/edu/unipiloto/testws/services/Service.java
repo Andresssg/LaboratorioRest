@@ -66,6 +66,30 @@ public class Service {
         return new ArrayList<>(persons.values());
     }
 
+    @GET
+    @Path("/getAverageSalaryXml")
+    @Produces(MediaType.APPLICATION_XML)
+    public double getAverageSalaryXml() {
+        double promedio = 0;
+        ArrayList personas = new ArrayList<>(persons.values());
+        for (int i = 0; i < persons.size(); i++) {
+            promedio += ((Person) personas.get(i)).getSalary();
+        }
+        promedio /= persons.size();
+        return promedio;
+    }
+    
+    @GET
+    @Path("/getSalariesInJson")
+    @Produces(MediaType.APPLICATION_JSON)
+    public double getSalariesInJson() {
+        double promedio = 0;
+        ArrayList personas = new ArrayList<>(persons.values());
+        for (int i = 0; i < persons.size(); i++) {
+            promedio += ((Person) personas.get(i)).getSalary();
+        }
+        return promedio;
+    }
 
     @POST
     @Path("/addPersonInJson")
