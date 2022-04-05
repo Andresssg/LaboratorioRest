@@ -14,6 +14,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -41,14 +42,14 @@ public class Service {
     @GET
     @Path("/getPersonByIdXml/{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Person getPersonByIdXML(int id) {
+    public Person getPersonByIdXML(@PathParam("id") int id) {
         return persons.get(id);
     }
 
     @GET
     @Path("/getPersonByIdJson/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Person getPersonByIdJson(int id) {
+    public Person getPersonByIdJson(@PathParam("id") int id) {
         return persons.get(id);
     }
 
@@ -67,7 +68,7 @@ public class Service {
     }
 
     @GET
-    @Path("/getAverageSalaryXml")
+    @Path("/getAverageSalaryInXml")
     @Produces(MediaType.APPLICATION_XML)
     public double getAverageSalaryXml() {
         double promedio = 0;
@@ -78,7 +79,7 @@ public class Service {
         promedio /= persons.size();
         return promedio;
     }
-    
+
     @GET
     @Path("/getSalariesInJson")
     @Produces(MediaType.APPLICATION_JSON)
