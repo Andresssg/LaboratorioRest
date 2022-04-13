@@ -19,7 +19,7 @@ public class Person {
     private int id;
     private String fullName;
     private int age;
-    private double salary;
+    private int salary;
 
     public Person() {
     }
@@ -52,11 +52,11 @@ public class Person {
     }
     
     @XmlElement
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
     

@@ -34,14 +34,14 @@ public class Service {
             person.setId(id);
             person.setFullName("My wonderfull Person " + id);
             person.setAge(new Random().nextInt(40) + 1);
-            person.setSalary(100.0);
+            person.setSalary(person.getAge() * 1000000 / 3);
             persons.put(id, person);
         }
     }
 
     @GET
     @Path("/getPersonByIdXml/{id}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces("text/XML")
     public Person getPersonByIdXML(@PathParam("id") int id) {
         return persons.get(id);
     }
@@ -70,21 +70,21 @@ public class Service {
     @GET
     @Path("/getAverageSalaryInXml")
     @Produces(MediaType.APPLICATION_XML)
-    public double getAverageSalaryXml() {
-        double promedio = 0;
+    public String getAverageInSalaryXml() {
+        int promedio = 0;
         ArrayList personas = new ArrayList<>(persons.values());
         for (int i = 0; i < persons.size(); i++) {
             promedio += ((Person) personas.get(i)).getSalary();
         }
         promedio /= persons.size();
-        return promedio;
+        return "<promedio>" + promedio + "</promedio>";
     }
 
     @GET
     @Path("/getSalariesInJson")
     @Produces(MediaType.APPLICATION_JSON)
-    public double getSalariesInJson() {
-        double sumaSalarios = 0;
+    public int getSalariesInJson() {
+        int sumaSalarios = 0;
         ArrayList personas = new ArrayList<>(persons.values());
         for (int i = 0; i < persons.size(); i++) {
             sumaSalarios += ((Person) personas.get(i)).getSalary();
