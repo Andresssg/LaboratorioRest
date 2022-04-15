@@ -83,13 +83,13 @@ public class Service {
     @GET
     @Path("/getSalariesInJson")
     @Produces(MediaType.APPLICATION_JSON)
-    public int getSalariesInJson() {
+    public String getSalariesInJson() {
         int sumaSalarios = 0;
         ArrayList personas = new ArrayList<>(persons.values());
         for (int i = 0; i < persons.size(); i++) {
             sumaSalarios += ((Person) personas.get(i)).getSalary();
         }
-        return sumaSalarios;
+        return "{\"suma\" : " + sumaSalarios + "}";
     }
 
     @POST
